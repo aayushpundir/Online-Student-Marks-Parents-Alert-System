@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Marks</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h2>Add Student</h2>
+      
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div class="alert-container">
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+      
+      <form method="POST">
+        <div class="form-group">
+          <label for="student_id">Student ID:</label>
+          <input type="text" id="student_id" name="student_id" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Name:</label>
+          <input type="text" id="subject" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="parentNumber">Parent's Mobile Number: </label>
+          <input type="text" class="mark" name="parentNumber" style="width: 100%;
+                        padding: 0.75rem;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                        box-sizing: border-box;
+                        transition: border-color 0.3s ease;" required>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
